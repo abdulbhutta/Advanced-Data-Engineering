@@ -1,0 +1,2508 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "%sh\nwget -q https://github.com/tofighi/BigData/blob/main/datasets/cars/cars.zip?raw=true -O cars.zip\nls -lah cars.zip",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T13:54:05+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": false,
+          "language": "sh"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sh",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "-rw-r--r-- 1 zeppelin zeppelin 89M Feb 26 13:54 cars.zip\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706710_881968961",
+      "id": "paragraph_1708647821133_2082277355",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "dateStarted": "2024-02-26T13:54:06+0000",
+      "dateFinished": "2024-02-26T13:54:07+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:19017"
+    },
+    {
+      "text": "%sh\nunzip cars.zip && rm cars.zip\nhadoop fs -mkdir /user/assignment\nhadoop fs -put cars.csv /user/assignment\nhadoop fs -ls -h /user/assignment",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T13:54:09+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": false,
+          "language": "sh"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sh",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Archive:  cars.zip\nreplace cars.csv? [y]es, [n]o, [A]ll, [N]one, [r]ename:  NULL\n(EOF or read error, treating as \"[N]one\" ...)\nFound 1 items\n-rw-r--r--   2 zeppelin hadoop    400.0 M 2024-02-26 13:54 /user/assignment/cars.csv\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706710_238573335",
+      "id": "paragraph_1708648586460_551828591",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "dateStarted": "2024-02-26T13:54:09+0000",
+      "dateFinished": "2024-02-26T13:54:21+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:19018"
+    },
+    {
+      "text": "%sh\nhadoop fs -cat /user/assignment/cars.csv | head -n 5",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": false,
+          "language": "sh"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sh",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "maker,model,mileage,manufacture_year,engine_displacement,engine_power,body_type,color_slug,stk_year,transmission,door_coucantt:, sUenaatb_lceo utnot ,wfruietle_ ttyop eo,udtaptuet_ csrteraetaemd.,date_last_seen\n,price_eur\r\nford,galaxy,151000,2011,2000,103,,,None,man,5,7,diesel,2015-11-14 18:10:06.838319+00,2016-01-27 20:40:15.46361+00,10584.75\r\nskoda,octavia,143476,2012,2000,81,,,None,man,5,5,diesel,2015-11-14 18:10:06.853411+00,2016-01-27 20:40:15.46361+00,8882.31\r\nbmw,,97676,2010,1995,85,,,None,man,5,5,diesel,2015-11-14 18:10:06.861792+00,2016-01-27 20:40:15.46361+00,12065.06\r\nskoda,fabia,111970,2004,1200,47,,,None,man,5,5,gasoline,2015-11-14 18:10:06.872313+00,2016-01-27 20:40:15.46361+00,2960.77\r\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706710_8910446",
+      "id": "paragraph_1708648609991_1160283729",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19019"
+    },
+    {
+      "text": "%sql\nCREATE TABLE IF NOT EXISTS used_cars\nUSING CSV\nOPTIONS (path \"/user/assignment/cars.csv\", delimiter  \",\" , header \"true\", inferSchema \"true\")",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "sql"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706710_358678387",
+      "id": "paragraph_1708648717815_1627465346",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19020"
+    },
+    {
+      "text": "%sql \nSHOW TABLES;",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "sql"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "namespace0",
+                        "visible": true,
+                        "width": 150,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "tableName1",
+                        "visible": true,
+                        "width": 150,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "isTemporary2",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1,
+                      "paginationPageSize": 250
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "namespace": "string",
+                      "tableName": "string",
+                      "isTemporary": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "namespace\ttableName\tisTemporary\ndefault\tused_cars\tfalse\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706710_82565557",
+      "id": "paragraph_1708648643043_254183517",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19021"
+    },
+    {
+      "text": "%sql\nDESC used_cars;\nSELECT * FROM used_cars LIMIT 5;",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "sql"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 678,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "col_name0",
+                        "visible": true,
+                        "width": 150,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "data_type1",
+                        "visible": true,
+                        "width": 150,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "comment2",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1,
+                      "paginationPageSize": 250
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "col_name": "string",
+                      "data_type": "string",
+                      "comment": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "maker": "string",
+                      "model": "string",
+                      "mileage": "string",
+                      "manufacture_year": "string",
+                      "engine_displacement": "string",
+                      "engine_power": "string",
+                      "body_type": "string",
+                      "color_slug": "string",
+                      "stk_year": "string",
+                      "transmission": "string",
+                      "door_count": "string",
+                      "seat_count": "string",
+                      "fuel_type": "string",
+                      "date_created": "string",
+                      "date_last_seen": "string",
+                      "price_eur": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "col_name\tdata_type\tcomment\nmaker\tstring\tnull\nmodel\tstring\tnull\nmileage\tint\tnull\nmanufacture_year\tint\tnull\nengine_displacement\tint\tnull\nengine_power\tint\tnull\nbody_type\tstring\tnull\ncolor_slug\tstring\tnull\nstk_year\tstring\tnull\ntransmission\tstring\tnull\ndoor_count\tstring\tnull\nseat_count\tstring\tnull\nfuel_type\tstring\tnull\ndate_created\ttimestamp\tnull\ndate_last_seen\ttimestamp\tnull\nprice_eur\tdouble\tnull\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "maker\tmodel\tmileage\tmanufacture_year\tengine_displacement\tengine_power\tbody_type\tcolor_slug\tstk_year\ttransmission\tdoor_count\tseat_count\tfuel_type\tdate_created\tdate_last_seen\tprice_eur\nford\tgalaxy\t151000\t2011\t2000\t103\tnull\tnull\tNone\tman\t5\t7\tdiesel\t2015-11-14 18:10:06.838319\t2016-01-27 20:40:15.46361\t10584.75\nskoda\toctavia\t143476\t2012\t2000\t81\tnull\tnull\tNone\tman\t5\t5\tdiesel\t2015-11-14 18:10:06.853411\t2016-01-27 20:40:15.46361\t8882.31\nbmw\tnull\t97676\t2010\t1995\t85\tnull\tnull\tNone\tman\t5\t5\tdiesel\t2015-11-14 18:10:06.861792\t2016-01-27 20:40:15.46361\t12065.06\nskoda\tfabia\t111970\t2004\t1200\t47\tnull\tnull\tNone\tman\t5\t5\tgasoline\t2015-11-14 18:10:06.872313\t2016-01-27 20:40:15.46361\t2960.77\nskoda\tfabia\t128886\t2004\t1200\t47\tnull\tnull\tNone\tman\t5\t5\tgasoline\t2015-11-14 18:10:06.880335\t2016-01-27 20:40:15.46361\t2738.71\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706711_1163782911",
+      "id": "paragraph_1708648647969_1589008864",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19022"
+    },
+    {
+      "text": "%sql\nSELECT \n  COUNT(CASE WHEN maker = '' OR maker IS NULL THEN 1 END) AS missing_values_maker\nFROM used_cars",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "scala"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "missing_values_maker": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "missing_values_maker\n518915\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706711_614635384",
+      "id": "paragraph_1708648873398_385054912",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19023"
+    },
+    {
+      "text": "%sql\nSELECT \n  COUNT(IF(maker = '' OR maker IS NULL, 1, NULL)) AS missing_values_maker,\n  COUNT(IF(model = '' OR model IS NULL, 1, NULL)) AS missing_values_model,\n  COUNT(IF(mileage IS NULL, 1, NULL)) AS missing_values_mileage,\n  COUNT(IF(manufacture_year IS NULL, 1, NULL)) AS missing_values_manufacture_year,\n  COUNT(IF(engine_displacement IS NULL, 1, NULL)) AS missing_values_engine_displacement,\n  COUNT(IF(engine_power IS NULL, 1, NULL)) AS missing_values_engine_power,\n  COUNT(IF(body_type = '' OR body_type IS NULL, 1, NULL)) AS missing_values_body_type,\n  COUNT(IF(color_slug = '' OR color_slug IS NULL, 1, NULL)) AS missing_values_color_slug,\n  COUNT(IF(stk_year = '' OR stk_year IS NULL, 1, NULL)) AS missing_values_stk_year,\n  COUNT(IF(transmission = '' OR transmission IS NULL, 1, NULL)) AS missing_values_transmission,\n  COUNT(IF(door_count IS NULL, 1, NULL)) AS missing_values_door_count,  \n  COUNT(IF(seat_count IS NULL, 1, NULL)) AS missing_values_seat_count,\n  COUNT(IF(fuel_type = '' OR fuel_type IS NULL, 1, NULL)) AS missing_values_fuel_type,\n  COUNT(IF(date_created IS NULL, 1, NULL)) AS missing_values_date_created,\n  COUNT(IF(date_last_seen IS NULL, 1, NULL)) AS missing_values_date_last_seen,\n  COUNT(IF(price_eur IS NULL, 1, NULL)) AS missing_values_price_eur\nFROM used_cars",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "sql"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "missing_values_maker0",
+                        "visible": true,
+                        "width": 200,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "missing_values_model1",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "missing_values_mileage2",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "missing_values_manufacture_year3",
+                        "visible": true,
+                        "width": 310,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "missing_values_engine_displacement4",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "missing_values_engine_power5",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "missing_values_body_type6",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "missing_values_color_slug7",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "missing_values_stk_year8",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "missing_values_transmission9",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "missing_values_door_count10",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "missing_values_seat_count11",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "missing_values_fuel_type12",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "missing_values_date_created13",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "missing_values_date_last_seen14",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "missing_values_price_eur15",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1,
+                      "paginationPageSize": 250
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "missing_values_maker": "string",
+                      "missing_values_model": "string",
+                      "missing_values_mileage": "string",
+                      "missing_values_manufacture_year": "string",
+                      "missing_values_engine_displacement": "string",
+                      "missing_values_engine_power": "string",
+                      "missing_values_body_type": "string",
+                      "missing_values_color_slug": "string",
+                      "missing_values_stk_year": "string",
+                      "missing_values_transmission": "string",
+                      "missing_values_door_count": "string",
+                      "missing_values_seat_count": "string",
+                      "missing_values_fuel_type": "string",
+                      "missing_values_date_created": "string",
+                      "missing_values_date_last_seen": "string",
+                      "missing_values_price_eur": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "missing_values_maker\tmissing_values_model\tmissing_values_mileage\tmissing_values_manufacture_year\tmissing_values_engine_displacement\tmissing_values_engine_power\tmissing_values_body_type\tmissing_values_color_slug\tmissing_values_stk_year\tmissing_values_transmission\tmissing_values_door_count\tmissing_values_seat_count\tmissing_values_fuel_type\tmissing_values_date_created\tmissing_values_date_last_seen\tmissing_values_price_eur\n518915\t1133361\t362584\t370578\t743414\t554877\t1122914\t3343411\t1708156\t741630\t614373\t749489\t1847606\t0\t0\t0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706711_2061794506",
+      "id": "paragraph_1708649271076_1077860555",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19024"
+    },
+    {
+      "text": "%sql\nSELECT \n  ROUND(COUNT(IF(maker = '' OR maker IS NULL, 1, NULL)) / COUNT(*) * 100, 4) AS maker_count_null_percentage\nFROM used_cars",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "scala"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "maker_count_null_percentage": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "maker_count_null_percentage\n14.6053\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706711_1450174965",
+      "id": "paragraph_1708649821643_1518178940",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19025"
+    },
+    {
+      "text": "%sql\nSELECT \n  ROUND(COUNT(CASE WHEN maker = '' OR maker IS NULL THEN 1 END) / COUNT(*) * 100, 4) AS maker_count_null_percentage,\n  ROUND(COUNT(CASE WHEN model = '' OR model IS NULL THEN 1 END) / COUNT(*) * 100, 4) AS model_count_null_percentage,\n  ROUND(COUNT(CASE WHEN mileage IS NULL THEN 1 END) / COUNT(*) * 100, 4) AS mileage_count_null_percentage,\n  ROUND(COUNT(CASE WHEN manufacture_year IS NULL THEN 1 END) / COUNT(*) * 100, 4) AS manufacture_year_count_null_percentage,\n  ROUND(COUNT(CASE WHEN engine_displacement IS NULL THEN 1 END) / COUNT(*) * 100, 4) AS engine_displacement_count_null_percentage,\n  ROUND(COUNT(CASE WHEN engine_power IS NULL THEN 1 END) / COUNT(*) * 100, 4) AS engine_power_count_null_percentage,\n  ROUND(COUNT(CASE WHEN body_type = '' OR body_type IS NULL THEN 1 END) / COUNT(*) * 100, 4) AS body_type_count_null_percentage,\n  ROUND(COUNT(CASE WHEN color_slug = '' OR color_slug IS NULL THEN 1 END) / COUNT(*) * 100, 4) AS color_slug_count_null_percentage,\n  ROUND(COUNT(CASE WHEN stk_year = '' OR stk_year IS NULL THEN 1 END) / COUNT(*) * 100, 4) AS stk_year_count_null_percentage,\n  ROUND(COUNT(CASE WHEN transmission = '' OR transmission IS NULL THEN 1 END) / COUNT(*) * 100, 4) AS transmission_count_null_percentage,\n  ROUND(COUNT(CASE WHEN door_count IS NULL THEN 1 END) / COUNT(*) * 100, 4) AS door_count_count_null_percentage,\n  ROUND(COUNT(CASE WHEN seat_count IS NULL THEN 1 END) / COUNT(*) * 100, 4) AS seat_count_count_null_percentage,\n  ROUND(COUNT(CASE WHEN fuel_type = '' OR fuel_type IS NULL THEN 1 END) / COUNT(*) * 100, 4) AS fuel_type_count_null_percentage,\n  ROUND(COUNT(CASE WHEN date_created IS NULL THEN 1 END) / COUNT(*) * 100, 4) AS date_created_count_null_percentage,\n  ROUND(COUNT(CASE WHEN date_last_seen IS NULL THEN 1 END) / COUNT(*) * 100, 4) AS date_last_seen_count_null_percentage,\n  ROUND(COUNT(CASE WHEN price_eur IS NULL THEN 1 END) / COUNT(*) * 100, 4) AS price_eur_count_null_percentage\nFROM used_cars",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "sql"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "maker_count_null_percentage0",
+                        "visible": true,
+                        "width": 270,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "model_count_null_percentage1",
+                        "visible": true,
+                        "width": 270,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "mileage_count_null_percentage2",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "manufacture_year_count_null_percentage3",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "engine_displacement_count_null_percentage4",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "engine_power_count_null_percentage5",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "body_type_count_null_percentage6",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "color_slug_count_null_percentage7",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "stk_year_count_null_percentage8",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "transmission_count_null_percentage9",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "door_count_count_null_percentage10",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "seat_count_count_null_percentage11",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "fuel_type_count_null_percentage12",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "date_created_count_null_percentage13",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "date_last_seen_count_null_percentage14",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "price_eur_count_null_percentage15",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1,
+                      "paginationPageSize": 250
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "maker_count_null_percentage": "string",
+                      "model_count_null_percentage": "string",
+                      "mileage_count_null_percentage": "string",
+                      "manufacture_year_count_null_percentage": "string",
+                      "engine_displacement_count_null_percentage": "string",
+                      "engine_power_count_null_percentage": "string",
+                      "body_type_count_null_percentage": "string",
+                      "color_slug_count_null_percentage": "string",
+                      "stk_year_count_null_percentage": "string",
+                      "transmission_count_null_percentage": "string",
+                      "door_count_count_null_percentage": "string",
+                      "seat_count_count_null_percentage": "string",
+                      "fuel_type_count_null_percentage": "string",
+                      "date_created_count_null_percentage": "string",
+                      "date_last_seen_count_null_percentage": "string",
+                      "price_eur_count_null_percentage": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "maker_count_null_percentage\tmodel_count_null_percentage\tmileage_count_null_percentage\tmanufacture_year_count_null_percentage\tengine_displacement_count_null_percentage\tengine_power_count_null_percentage\tbody_type_count_null_percentage\tcolor_slug_count_null_percentage\tstk_year_count_null_percentage\ttransmission_count_null_percentage\tdoor_count_count_null_percentage\tseat_count_count_null_percentage\tfuel_type_count_null_percentage\tdate_created_count_null_percentage\tdate_last_seen_count_null_percentage\tprice_eur_count_null_percentage\n14.6053\t31.8995\t10.2053\t10.4303\t20.9241\t15.6175\t31.6055\t94.1034\t48.0776\t20.8739\t17.2921\t21.0951\t52.0026\t0.0\t0.0\t0.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706711_735100479",
+      "id": "paragraph_1708648872877_1823975695",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19026"
+    },
+    {
+      "text": "%spark\n// Load the 'used_cars' table into a DataFrame\nval usedCarsDF = spark.table(\"used_cars\")\n\n// Drop the specified columns\nval updatedDF = usedCarsDF.drop(\"color_slug\", \"fuel_type\", \"date_created\", \"date_last_seen\")\n\n// To avoid the read and write to the same table, first write to a temporary view or table\nupdatedDF.createOrReplaceTempView(\"temp_used_cars\")\n\n// Then write the temp view to the 'used_cars' table\nspark.sql(\"DROP TABLE used_cars\")\nspark.table(\"temp_used_cars\").write.saveAsTable(\"used_cars\")",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "scala"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34musedCarsDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [maker: string, model: string ... 14 more fields]\n\u001b[1m\u001b[34mupdatedDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [maker: string, model: string ... 10 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706712_1285647491",
+      "id": "paragraph_1708648871470_1923125105",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19027"
+    },
+    {
+      "text": "%spark\nval df = spark.sql(\"SELECT * FROM used_cars LIMIT 5\")\ndf.show()",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "scala"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------------+------+-------+----------------+-------------------+------------+---------+--------+------------+----------+----------+---------+\n|        maker| model|mileage|manufacture_year|engine_displacement|engine_power|body_type|stk_year|transmission|door_count|seat_count|price_eur|\n+-------------+------+-------+----------------+-------------------+------------+---------+--------+------------+----------+----------+---------+\n|   mitsubishi|  colt|  51600|            2012|               1332|          70|     null|    None|         man|         2|         5|   7483.6|\n|         null|  null|  68209|            2012|               1560|          82|     null|    None|         man|         2|         4| 11905.74|\n|         audi|    q5|  29600|            2012|               2967|         180|     null|    None|        auto|         4|         5| 32771.76|\n|          kia|carens| 130969|            2009|               1991|         103|     null|    None|         man|         4|         5|  8654.15|\n|mercedes-benz|  null| 184190|            2007|               2148|         110|     null|    None|         man|         4|         5|  4502.18|\n+-------------+------+-------+----------------+-------------------+------------+---------+--------+------------+----------+----------+---------+\n\n\u001b[1m\u001b[34mdf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [maker: string, model: string ... 10 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706712_1453744183",
+      "id": "paragraph_1708668600055_1444933423",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19028"
+    },
+    {
+      "text": "%sql\nDESCRIBE used_cars;\nSELECT (*) FROM used_cars LIMIT 5;",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "sql"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 534.117615,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "col_name0",
+                        "visible": true,
+                        "width": 150,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "data_type1",
+                        "visible": true,
+                        "width": 150,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "comment2",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1,
+                      "paginationPageSize": 250
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "col_name": "string",
+                      "data_type": "string",
+                      "comment": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "maker": "string",
+                      "model": "string",
+                      "mileage": "string",
+                      "manufacture_year": "string",
+                      "engine_displacement": "string",
+                      "engine_power": "string",
+                      "body_type": "string",
+                      "stk_year": "string",
+                      "transmission": "string",
+                      "door_count": "string",
+                      "seat_count": "string",
+                      "price_eur": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          },
+          "2": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "maker": "string",
+                      "model": "string",
+                      "mileage": "string",
+                      "manufacture_year": "string",
+                      "engine_displacement": "string",
+                      "engine_power": "string",
+                      "body_type": "string",
+                      "stk_year": "string",
+                      "transmission": "string",
+                      "door_count": "string",
+                      "seat_count": "string",
+                      "price_eur": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "col_name\tdata_type\tcomment\nmaker\tstring\tnull\nmodel\tstring\tnull\nmileage\tint\tnull\nmanufacture_year\tint\tnull\nengine_displacement\tint\tnull\nengine_power\tint\tnull\nbody_type\tstring\tnull\nstk_year\tstring\tnull\ntransmission\tstring\tnull\ndoor_count\tstring\tnull\nseat_count\tstring\tnull\nprice_eur\tdouble\tnull\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "maker\tmodel\tmileage\tmanufacture_year\tengine_displacement\tengine_power\tbody_type\tstk_year\ttransmission\tdoor_count\tseat_count\tprice_eur\nnull\tnull\t0\tnull\t2157\t131\tother\tnull\tman\t4\t5\t20713.4\nnull\tnull\t0\tnull\t2157\t131\tother\tnull\tman\t4\t5\t20713.4\nsuzuki\tignis\t140000\t2003\t1328\t61\tother\tnull\tman\t4\t5\t1791.6\nvolkswagen\tgolf\t210000\t2006\t1896\t74\tother\tnull\tman\t4\t5\t4103.63\naudi\ta4\t164201\t2008\t1968\t105\tother\tnull\tman\t4\t5\t8452.52\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706712_1470106409",
+      "id": "paragraph_1708667972847_370609042",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19029"
+    },
+    {
+      "text": "%sql\nDROP TABLE clean_used_cars;",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "scala"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706712_2053272992",
+      "id": "paragraph_1708668735652_755362517",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19030"
+    },
+    {
+      "text": "",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "scala"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706712_1737025207",
+      "id": "paragraph_1708689467414_913268388",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19031"
+    },
+    {
+      "text": "%sql\nCREATE TABLE clean_used_cars AS\nSELECT *\nFROM used_cars\nWHERE manufacture_year BETWEEN 2000 AND 2017\nAND maker IS NOT NULL AND maker != '' \nAND model IS NOT NULL AND model != ''\nAND price_eur BETWEEN 3000 AND 2000000;\n\nSELECT * FROM clean_used_cars LIMIT 5;",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "scala"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "maker0",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "model1",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "price_eur11",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "manufacture_year3",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "mileage2",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "engine_displacement4",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "engine_power5",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "body_type6",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "stk_year7",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "transmission8",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "door_count9",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "seat_count10",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1,
+                      "paginationPageSize": 250
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "maker": "string",
+                      "model": "string",
+                      "mileage": "string",
+                      "manufacture_year": "string",
+                      "engine_displacement": "string",
+                      "engine_power": "string",
+                      "body_type": "string",
+                      "stk_year": "string",
+                      "transmission": "string",
+                      "door_count": "string",
+                      "seat_count": "string",
+                      "price_eur": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "TOTAL_RECORDS": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          },
+          "2": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "TOTAL_RECORDS": "string"
+                    },
+                    "updated": true
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "maker\tmodel\tmileage\tmanufacture_year\tengine_displacement\tengine_power\tbody_type\tstk_year\ttransmission\tdoor_count\tseat_count\tprice_eur\nvolkswagen\tgolf\t210000\t2006\t1896\t74\tother\tnull\tman\t4\t5\t4103.63\naudi\ta4\t164201\t2008\t1968\t105\tother\tnull\tman\t4\t5\t8452.52\nrenault\tmegane\t33799\t2014\t1461\t70\tother\tnull\tnull\tnull\t5\t11910.58\nrenault\tlaguna\t68600\t2013\t1995\t129\tother\tnull\tnull\tnull\t5\t15914.14\npeugeot\t5008\t21938\t2014\t1560\t84\tother\tnull\tman\t4\t5\t14541.89\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706712_1843263338",
+      "id": "paragraph_1708668277648_746832925",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19032"
+    },
+    {
+      "text": "%sql\nSELECT COUNT(*) AS TOTAL_RECORDS FROM clean_used_cars;",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "sql"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "TOTAL_RECORDS": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "TOTAL_RECORDS\n1322853\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706712_2015997696",
+      "id": "paragraph_1708689478438_538476725",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19033"
+    },
+    {
+      "text": "%sql\nSELECT maker, model, AVG(price_eur) AS avg_price\nFROM clean_used_cars\nGROUP BY maker, model\nORDER BY avg_price DESC\nLIMIT 10",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "scala"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 504.117645,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "maker0",
+                        "visible": true,
+                        "width": 150,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "model1",
+                        "visible": true,
+                        "width": 150,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "avg_price2",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1,
+                      "paginationPageSize": 250
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "maker": "string",
+                      "model": "string",
+                      "avg_price": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "maker\tmodel\tavg_price\nlamborghini\taventador\t365960.9951851851\nporsche\tcarrera-gt\t302045.2166483517\nbmw\tz8\t245118.60081081084\ntesla\troadster\t192880.28\ntesla\tmodel-x\t176418.31999999998\nbentley\tbrooklands\t138501.302\nrolls-royce\twraith\t137663.46666666667\nbentley\tcontinental-gtc\t129138.87816666668\nbmw\ti8\t112273.42633663367\nbentley\tcontinental-gt\t105946.88678807947\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706712_1991616503",
+      "id": "paragraph_1708668494260_2050904478",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19034"
+    },
+    {
+      "text": "%sql\nSELECT maker, model, AVG(price_eur) AS avg_price\nFROM clean_used_cars\nGROUP BY maker, model\nORDER BY avg_price ASC\nLIMIT 10",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "scala"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 464.117645,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "maker0",
+                        "visible": true,
+                        "width": 150,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "model1",
+                        "visible": true,
+                        "width": 150,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "avg_price2",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1,
+                      "paginationPageSize": 250
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "maker": "string",
+                      "model": "string",
+                      "avg_price": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "maker",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "model",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "maker\tmodel\tavg_price\nskoda\tgalaxy\t3071.8\nrover\tstreetwise\t3187.8466666666664\nkia\tretona\t3200.2542857142857\nbmw\ttransit\t3290.16\nchevrolet\talero\t3305.37\nhyundai\tsantamo\t3391.01\nopel\tkadett\t3405.48\nfiat\t128\t3460.3999999999996\nnissan\tfrontier\t3478.9049999999997\nseat\tinca\t3498.6566666666663\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706712_1814810017",
+      "id": "paragraph_1708668901550_39460156",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19035"
+    },
+    {
+      "text": "%sql\nSELECT maker, model, AVG(price_eur) AS avg_price\nFROM clean_used_cars\nWHERE price_eur >= 3000 AND price_eur < 20000\nGROUP BY maker, model\nORDER BY avg_price DESC\nLIMIT 5",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "scala"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "maker0",
+                        "visible": true,
+                        "width": 150,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "model1",
+                        "visible": true,
+                        "width": 150,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "avg_price2",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1,
+                      "paginationPageSize": 250
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "maker": "string",
+                      "model": "string",
+                      "avg_price": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "maker\tmodel\tavg_price\nvolvo\t241\t19980.0\nvolvo\t960\t19306.14\ntoyota\tgt86\t18791.271506849316\ntoyota\tvenza\t18510.29\ninfinity\tm30\t18424.13\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706713_1191516368",
+      "id": "paragraph_1708669162951_1917996799",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19036"
+    },
+    {
+      "text": "%sql\nSELECT maker, model, AVG(price_eur) AS avg_price\nFROM clean_used_cars\nWHERE price_eur >= 20000 AND price_eur < 300000\nGROUP BY maker, model\nORDER BY avg_price DESC\nLIMIT 5",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "scala"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "maker0",
+                        "visible": true,
+                        "width": 150,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "model1",
+                        "visible": true,
+                        "width": 150,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "avg_price2",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1,
+                      "paginationPageSize": 250
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "maker": "string",
+                      "model": "string",
+                      "avg_price": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "maker\tmodel\tavg_price\nlamborghini\taventador\t272901.63064516126\nbmw\tz8\t235838.12\ntesla\tmodel-x\t176418.31999999998\nhyundai\tmatrix\t143241.42666666667\nbentley\tbrooklands\t138501.302\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706713_1446902270",
+      "id": "paragraph_1708669164890_52294946",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19037"
+    },
+    {
+      "text": "%sql\nSELECT maker, model, AVG(price_eur) AS avg_price\nFROM clean_used_cars\nWHERE price_eur >= 300000 AND price_eur < 2000000\nGROUP BY maker, model\nORDER BY avg_price DESC\nLIMIT 5",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "scala"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "maker0",
+                        "visible": true,
+                        "width": 150,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "model1",
+                        "visible": true,
+                        "width": 150,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "avg_price2",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1,
+                      "paginationPageSize": 250
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "maker": "string",
+                      "model": "string",
+                      "avg_price": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "maker\tmodel\tavg_price\nmazda\t323\t1350749.44\nvolkswagen\tgolf\t1179236.3666666667\nfiat\t500\t1125000.0\ntoyota\tyaris\t1111152.11\nfiat\tpanda\t1100000.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706713_1727616602",
+      "id": "paragraph_1708669165690_1541121988",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19038"
+    },
+    {
+      "text": "%sql\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "scala"
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706713_1146505011",
+      "id": "paragraph_1708669166325_1193533609",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19039"
+    },
+    {
+      "text": "%sql\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706713_1154219063",
+      "id": "paragraph_1708669166174_1869453550",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19040"
+    },
+    {
+      "text": "%sql\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706713_680193786",
+      "id": "paragraph_1708669166979_1676855685",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19041"
+    },
+    {
+      "text": "%sql\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-02-26T05:35:06+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1708925706713_561465905",
+      "id": "paragraph_1708669167469_2033903589",
+      "dateCreated": "2024-02-26T05:35:06+0000",
+      "status": "READY",
+      "$$hashKey": "object:19042"
+    }
+  ],
+  "name": "SPARK_EX1",
+  "id": "2JPPF4PCW",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/SPARK_EX1"
+}
